@@ -7,6 +7,7 @@ from .utilities import *
 import json
 import time
 from tethys_dataset_services.engines import GeoServerSpatialDatasetEngine
+from tethys_sdk.workspaces import app_workspace
 from sqlalchemy.orm.exc import ObjectDeletedError
 from sqlalchemy.exc import IntegrityError
 from .model import *
@@ -106,7 +107,8 @@ def get_plot_reg_pt(request):
 
 
 @user_passes_test(user_permission_test)
-def region_add(request):
+@app_workspace
+def region_add(request, workspace):
 
     response = {}
 
@@ -125,7 +127,7 @@ def region_add(request):
         thredds = session.query(Thredds).get(thredds_id)
         url, uname, pwd = thredds.url, thredds.username, thredds.password
 
-        subset2(shapefile, region_store, get_global_netcdf_dir(), region_name, thredds_id)
+        subset2(shapefile, region_store, get_global_netcdf_dir(), region_name, thredds_id, workspace)
 
         response = {"success": "success"}
 
@@ -140,7 +142,8 @@ def region_add(request):
 
 
 @user_passes_test(user_permission_test)
-def subset_initial_processing(request):
+@app_workspace
+def subset_initial_processing(request, workspace):
 
     response = {}
 
@@ -159,7 +162,7 @@ def subset_initial_processing(request):
         thredds = session.query(Thredds).get(thredds_id)
         url, uname, pwd = thredds.url, thredds.username, thredds.password
 
-        sub_initial(shapefile, region_store, get_global_netcdf_dir(), region_name, thredds_id)
+        sub_initial(shapefile, region_store, get_global_netcdf_dir(), region_name, thredds_id, workspace)
 
         response = {"initial": "initial"}
 
@@ -167,7 +170,8 @@ def subset_initial_processing(request):
 
 
 @user_passes_test(user_permission_test)
-def subset_jpl_tot(request):
+@app_workspace
+def subset_jpl_tot(request, workspace):
 
     response = {}
 
@@ -186,7 +190,7 @@ def subset_jpl_tot(request):
         thredds = session.query(Thredds).get(thredds_id)
         url, uname, pwd = thredds.url, thredds.username, thredds.password
 
-        sub_jpl_tot(shapefile, region_store, get_global_netcdf_dir(), region_name, thredds_id)
+        sub_jpl_tot(shapefile, region_store, get_global_netcdf_dir(), region_name, thredds_id, workspace)
 
         response = {"jpl-tot": "jpl-tot"}
 
@@ -194,7 +198,8 @@ def subset_jpl_tot(request):
 
 
 @user_passes_test(user_permission_test)
-def subset_jpl_gw(request):
+@app_workspace
+def subset_jpl_gw(request, workspace):
 
     response = {}
 
@@ -213,7 +218,7 @@ def subset_jpl_gw(request):
         thredds = session.query(Thredds).get(thredds_id)
         url, uname, pwd = thredds.url, thredds.username, thredds.password
 
-        sub_jpl_gw(shapefile, region_store, get_global_netcdf_dir(), region_name, thredds_id)
+        sub_jpl_gw(shapefile, region_store, get_global_netcdf_dir(), region_name, thredds_id, workspace)
 
         response = {"jpl-gw": "jpl-gw"}
 
@@ -221,7 +226,8 @@ def subset_jpl_gw(request):
 
 
 @user_passes_test(user_permission_test)
-def subset_csr_tot(request):
+@app_workspace
+def subset_csr_tot(request, workspace):
 
     response = {}
 
@@ -240,7 +246,7 @@ def subset_csr_tot(request):
         thredds = session.query(Thredds).get(thredds_id)
         url, uname, pwd = thredds.url, thredds.username, thredds.password
 
-        sub_csr_tot(shapefile, region_store, get_global_netcdf_dir(), region_name, thredds_id)
+        sub_csr_tot(shapefile, region_store, get_global_netcdf_dir(), region_name, thredds_id, workspace)
 
         response = {"csr-tot": "csr-tot"}
 
@@ -248,7 +254,8 @@ def subset_csr_tot(request):
 
 
 @user_passes_test(user_permission_test)
-def subset_csr_gw(request):
+@app_workspace
+def subset_csr_gw(request, workspace):
 
     response = {}
 
@@ -267,7 +274,7 @@ def subset_csr_gw(request):
         thredds = session.query(Thredds).get(thredds_id)
         url, uname, pwd = thredds.url, thredds.username, thredds.password
 
-        sub_csr_gw(shapefile, region_store, get_global_netcdf_dir(), region_name, thredds_id)
+        sub_csr_gw(shapefile, region_store, get_global_netcdf_dir(), region_name, thredds_id, workspace)
 
         response = {"csr-gw": "csr-gw"}
 
@@ -275,7 +282,8 @@ def subset_csr_gw(request):
 
 
 @user_passes_test(user_permission_test)
-def subset_gfz_tot(request):
+@app_workspace
+def subset_gfz_tot(request, workspace):
 
     response = {}
 
@@ -294,7 +302,7 @@ def subset_gfz_tot(request):
         thredds = session.query(Thredds).get(thredds_id)
         url, uname, pwd = thredds.url, thredds.username, thredds.password
 
-        sub_gfz_tot(shapefile, region_store, get_global_netcdf_dir(), region_name, thredds_id)
+        sub_gfz_tot(shapefile, region_store, get_global_netcdf_dir(), region_name, thredds_id, workspace)
 
         response = {"gfz-tot": "gfz-tot"}
 
@@ -302,7 +310,8 @@ def subset_gfz_tot(request):
 
 
 @user_passes_test(user_permission_test)
-def subset_gfz_gw(request):
+@app_workspace
+def subset_gfz_gw(request, workspace):
 
     response = {}
 
@@ -321,7 +330,7 @@ def subset_gfz_gw(request):
         thredds = session.query(Thredds).get(thredds_id)
         url, uname, pwd = thredds.url, thredds.username, thredds.password
 
-        sub_gfz_gw(shapefile, region_store, get_global_netcdf_dir(), region_name, thredds_id)
+        sub_gfz_gw(shapefile, region_store, get_global_netcdf_dir(), region_name, thredds_id, workspace)
 
         response = {"gfz-gw": "gfz-gw"}
 
@@ -329,7 +338,8 @@ def subset_gfz_gw(request):
 
 
 @user_passes_test(user_permission_test)
-def subset_avg_tot(request):
+@app_workspace
+def subset_avg_tot(request, workspace):
 
     response = {}
 
@@ -348,7 +358,7 @@ def subset_avg_tot(request):
         thredds = session.query(Thredds).get(thredds_id)
         url, uname, pwd = thredds.url, thredds.username, thredds.password
 
-        sub_avg_tot(shapefile, region_store, get_global_netcdf_dir(), region_name, thredds_id)
+        sub_avg_tot(shapefile, region_store, get_global_netcdf_dir(), region_name, thredds_id, workspace)
 
         response = {"avg-tot": "avg-tot"}
 
@@ -356,7 +366,8 @@ def subset_avg_tot(request):
 
 
 @user_passes_test(user_permission_test)
-def subset_avg_gw(request):
+@app_workspace
+def subset_avg_gw(request, workspace):
 
     response = {}
 
@@ -375,7 +386,7 @@ def subset_avg_gw(request):
         thredds = session.query(Thredds).get(thredds_id)
         url, uname, pwd = thredds.url, thredds.username, thredds.password
 
-        sub_avg_gw(shapefile, region_store, get_global_netcdf_dir(), region_name, thredds_id)
+        sub_avg_gw(shapefile, region_store, get_global_netcdf_dir(), region_name, thredds_id, workspace)
 
         response = {"avg-gw": "avg-gw"}
 
@@ -383,7 +394,8 @@ def subset_avg_gw(request):
 
 
 @user_passes_test(user_permission_test)
-def subset_sw(request):
+@app_workspace
+def subset_sw(request, workspace):
 
     response = {}
 
@@ -402,7 +414,7 @@ def subset_sw(request):
         thredds = session.query(Thredds).get(thredds_id)
         url, uname, pwd = thredds.url, thredds.username, thredds.password
 
-        sub_sw(shapefile, region_store, get_global_netcdf_dir(), region_name, thredds_id)
+        sub_sw(shapefile, region_store, get_global_netcdf_dir(), region_name, thredds_id, workspace)
 
         response = {"sw": "sw"}
 
@@ -410,7 +422,8 @@ def subset_sw(request):
 
 
 @user_passes_test(user_permission_test)
-def subset_soil(request):
+@app_workspace
+def subset_soil(request, workspace):
 
     response = {}
 
@@ -429,7 +442,7 @@ def subset_soil(request):
         thredds = session.query(Thredds).get(thredds_id)
         url, uname, pwd = thredds.url, thredds.username, thredds.password
 
-        sub_soil(shapefile, region_store, get_global_netcdf_dir(), region_name, thredds_id)
+        sub_soil(shapefile, region_store, get_global_netcdf_dir(), region_name, thredds_id, workspace)
 
         response = {"soil": "soil"}
 
@@ -437,7 +450,8 @@ def subset_soil(request):
 
 
 @user_passes_test(user_permission_test)
-def subset_cleanup(request):
+@app_workspace
+def subset_cleanup(request, workspace):
 
     response = {}
 
@@ -456,7 +470,7 @@ def subset_cleanup(request):
         thredds = session.query(Thredds).get(thredds_id)
         url, uname, pwd = thredds.url, thredds.username, thredds.password
 
-        sub_file_cleanup(shapefile, region_store, get_global_netcdf_dir(), region_name, thredds_id)
+        sub_file_cleanup(shapefile, region_store, get_global_netcdf_dir(), region_name, thredds_id, workspace)
 
         response = {"cleanup": "cleanup"}
 
@@ -464,7 +478,8 @@ def subset_cleanup(request):
 
 
 @user_passes_test(user_permission_test)
-def subset_update(request):
+@app_workspace
+def subset_update(request, workspace):
 
     response = {}
 
@@ -483,7 +498,7 @@ def subset_update(request):
         thredds = session.query(Thredds).get(thredds_id)
         url, uname, pwd = thredds.url, thredds.username, thredds.password
 
-        sub_update_ps(shapefile, region_store, get_global_netcdf_dir(), region_name, thredds_id)
+        sub_update_ps(shapefile, region_store, get_global_netcdf_dir(), region_name, thredds_id, workspace)
 
         response = {"success": "success"}
 

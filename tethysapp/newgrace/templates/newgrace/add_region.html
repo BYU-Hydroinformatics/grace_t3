@@ -18,7 +18,7 @@
 <h5>Thredds Server Location</h5>
 <em>Where the region shapefile is stored.</em><br/><br/>
 {% gizmo select_input thredds_select %}
-<p class="help-block">Don't see the thredds you want? Add one here.</p>
+<p class="help-block">Don't see the thredds you want? Add one <a href="{% url 'newgrace:add-thredds-server' %}">here</a>.</p>
 <div class="form-group shp_upload">
     <label class="control-label" for="shp-upload-input">Shapefile File (Required):</label>
     <input id="shp-upload-input" name="shp-upload-input" type="file" accept=".shp,.shx,.prj,.dbf" multiple>

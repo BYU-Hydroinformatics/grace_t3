@@ -4,9 +4,12 @@ from tethys_sdk.gizmos import *
 from .app import *
 from .model import *
 from .utilities import *
-from .config import get_thredds_url, get_global_netcdf_dir, SHELL_DIR
+from .config import get_thredds_url, get_global_netcdf_dir
 from .update_global_data import *
 
+from tethys_sdk.workspaces import app_workspace
+
+# BASE_PATH, SHELL_DIR, SHAPE_DIR = get_app_dir(app_workspace)
 # @login_required()
 
 

@@ -137,9 +137,6 @@ class Newgrace(TethysAppBase):
                    url='newgrace/add-region/update',
                    controller='newgrace.ajax_controllers.subset_update'
             ),
-
-
-
             UrlMap(
                 name='add-thredds-server',
                 url='add-thredds-server',

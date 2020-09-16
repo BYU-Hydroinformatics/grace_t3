@@ -13,9 +13,11 @@ import shutil
 import sys
 import calendar
 from netCDF4 import Dataset
-from .config import get_global_netcdf_dir, SHELL_DIR
+from .config import get_global_netcdf_dir
 from django.http import JsonResponse, HttpResponse, Http404
 from .utilities import user_permission_test
+
+from tethys_sdk.workspaces import app_workspace
 
 
 @user_passes_test(user_permission_test)

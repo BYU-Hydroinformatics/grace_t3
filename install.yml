@@ -14,5 +14,6 @@ requirements:
       - pyshp
       - rtree
       - geojson
+      - nco
   pip:
     - area
