@@ -145,7 +145,7 @@ map.on('fullscreenchange', function() {
 var signal_process = $("#select_signal_process").find('option:selected').val();
 var storage_type = $("#select_storage_type").find('option:selected').val();
 //var testWMS="http://127.0.0.1:7000/thredds/wms/testAll/grace/GRC_"+signal_process+"_"+storage_type+".nc"
-var testWMS = thredds_wms+"wms/testAll/grace/GRC_"+signal_process+"_"+storage_type+".nc";
+var testWMS = thredds_wms+"wms/data/grace/grace/GRC_"+signal_process+"_"+storage_type+".nc";
 
 var testLayer = L.tileLayer.wms(testWMS, {
     layers: 'grace',
@@ -187,7 +187,7 @@ function updateWMS(){
     var storage_type = $("#select_storage_type").find('option:selected').val();
     var storage_name = $("#select_storage_type").find('option:selected').text();
 //    var testWMS="http://127.0.0.1:7000/thredds/wms/testAll/grace/GRC_"+signal_process+"_"+storage_type+".nc"
-    var testWMS = thredds_wms+"wms/testAll/grace/GRC_"+signal_process+"_"+storage_type+".nc";
+    var testWMS = thredds_wms+"wms/data/grace/grace/GRC_"+signal_process+"_"+storage_type+".nc";
 
     var date_value = new Date($("#select_layer").find('option:selected').val());
     var colormin = $("#col_min").val();

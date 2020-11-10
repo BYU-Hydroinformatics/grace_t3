@@ -50,7 +50,7 @@
     <body>
     <script>window.onbeforeunload = null;</script>
 
-        {% if regions_length > 1 %}
+        {% if regions_length > 0 %}
         <span class="reg_options" style="display: inline-block; white-space:nowrap; float:left; width:12%">
         <form action="{% url 'newgrace:region' %}" method="get">
                     <a name="submit-go-to-map" onchange="document.forms[0].submit();" id="submit-go-to-map" style="color:black;">
@@ -315,7 +315,7 @@
     <br>
     <div id= "ts-instructions" class="time-series-instructions">
         <br><p>To generate a time series for a specific location, click on the <b>Marker Icon</b>
-        <span id= marker-icon class="glyphicon glyphicon-map-marker"></span>
+        <span id="marker-icon" class="glyphicon glyphicon-map-marker"></span>
          on left side of the map.  Then place the marker at the location for which you wish to extract a time series from the current map layer.
         <br>
         <br>
